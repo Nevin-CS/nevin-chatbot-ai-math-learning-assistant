@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Nevin Chatbot - AI Math Learning Assistant prototype for the DDS Building AI Application Challenge 2026." />
+  <meta name="theme-color" content="#0f172a" />
+  <title>Nevin Chatbot | AI Math Learning Assistant</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="Nevin Chatbot home">
+      <span class="brand-mark">N</span>
+      <span><strong>Nevin Chatbot</strong><small>AI Math Learning Assistant</small></span>
+    </a>
+    <nav aria-label="Main navigation">
+      <a href="#assistant">Assistant</a>
+      <a href="#features">Features</a>
+      <a href="#about">About</a>
+      <a class="github-link" href="https://github.com/Nevin-CS/nevin-chatbot-ai-math-learning-assistant" target="_blank" rel="noopener">GitHub</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-copy">
+        <span class="eyebrow">DDS Building AI Application Challenge 2026 · Day 2 Prototype</span>
+        <h1>Understand the <span>math</span>, not just the answer.</h1>
+        <p>Nevin Chatbot is an educational assistant designed to analyze math questions, explain the underlying concept, and guide learners through clear step-by-step solutions.</p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#assistant">Try the prototype</a>
+          <a class="btn secondary" href="#examples">View examples</a>
+        </div>
+        <div class="hero-pills">
+          <span>Step-by-step learning</span><span>Concept explanations</span><span>Student-focused UX</span>
+        </div>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <div class="orb"></div>
+        <div class="formula f1">x² + 5x + 6</div>
+        <div class="formula f2">∫ f(x) dx</div>
+        <div class="formula f3">a² + b² = c²</div>
+        <div class="assistant-card">
+          <div class="bot-face">∑</div>
+          <strong>Math learning flow</strong>
+          <small>Question → Concept → Steps → Check</small>
+        </div>
+      </div>
+    </section>
+
+    <section class="assistant-section" id="assistant">
+      <div class="section-heading">
+        <span class="eyebrow">Interactive prototype</span>
+        <h2>Ask a math question</h2>
+        <p>This Day 2 version demonstrates the intended learning flow. It includes a local prototype engine for selected arithmetic and simple linear-equation examples; an LLM/API connection is planned for later challenge days.</p>
+      </div>
+
+      <div class="workspace">
+        <div class="question-panel card">
+          <label for="level">Learning level</label>
+          <select id="level">
+            <option value="simple">Simple explanation</option>
+            <option value="standard" selected>Standard explanation</option>
+            <option value="detailed">Detailed explanation</option>
+          </select>
+
+          <label for="question">Your math question</label>
+          <textarea id="question" rows="6" placeholder="Try: 2x + 3 = 11   or   12 * (4 + 3)"></textarea>
+
+          <div class="quick-examples" id="examples">
+            <button type="button" data-q="2x + 3 = 11">2x + 3 = 11</button>
+            <button type="button" data-q="12 * (4 + 3)">12 × (4 + 3)</button>
+            <button type="button" data-q="18 / 3 + 5">18 ÷ 3 + 5</button>
+          </div>
+
+          <div class="button-row">
+            <button id="solveBtn" class="btn primary" type="button">Explain step by step</button>
+            <button id="clearBtn" class="btn ghost" type="button">Clear</button>
+          </div>
+          <p class="safety-note">Prototype note: always verify AI-generated mathematical work. This Day 2 demo is not a substitute for a teacher or formal assessment.</p>
+        </div>
+
+        <div class="answer-panel card" aria-live="polite">
+          <div class="answer-header">
+            <div>
+              <span class="eyebrow">Learning response</span>
+              <h3 id="answerTitle">Ready when you are</h3>
+            </div>
+            <span id="statusBadge" class="status">Prototype</span>
+          </div>
+          <div id="answerContent" class="answer-content empty-state">
+            <div class="empty-icon">ƒ(x)</div>
+            <p>Enter a supported arithmetic expression or a simple linear equation in <strong>x</strong> to see the Day 2 learning flow.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="features" id="features">
+      <div class="section-heading centered">
+        <span class="eyebrow">Planned product capabilities</span>
+        <h2>Designed for learning, not answer copying</h2>
+      </div>
+      <div class="feature-grid">
+        <article class="feature-card"><span>01</span><h3>Question analysis</h3><p>Interpret the learner's question and identify the mathematical task.</p></article>
+        <article class="feature-card"><span>02</span><h3>Step-by-step solving</h3><p>Break the solution into understandable stages rather than only showing a final result.</p></article>
+        <article class="feature-card"><span>03</span><h3>Concept explanations</h3><p>Explain the mathematical idea behind the steps in learner-friendly language.</p></article>
+        <article class="feature-card"><span>04</span><h3>Personalized support</h3><p>Adjust explanation depth based on the learner's selected level and questions.</p></article>
+      </div>
+    </section>
+
+    <section class="about" id="about">
+      <div class="about-copy">
+        <span class="eyebrow">Project purpose</span>
+        <h2>Making mathematics more approachable</h2>
+        <p>The project is aimed at high-school, college and introductory university learners, as well as teachers and independent learners who want an interactive support tool.</p>
+        <p>The full challenge roadmap will focus on accuracy, reducing misleading answers, improving prompt consistency, supporting different learning levels, and maintaining a simple user experience.</p>
+      </div>
+      <div class="roadmap card">
+        <h3>Challenge roadmap</h3>
+        <ol>
+          <li><b>Day 1</b><span>Idea & concept</span></li>
+          <li class="active"><b>Day 2</b><span>Environment & prototype</span></li>
+          <li><b>Day 3</b><span>Build the AI brain</span></li>
+          <li><b>Day 4</b><span>Evaluate & optimize</span></li>
+          <li><b>Day 5+</b><span>Integrate, secure & deploy</span></li>
+        </ol>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div><strong>Nevin Chatbot</strong><span>Built for the DDS Building AI Application Challenge 2026.</span></div>
+    <a href="https://github.com/Nevin-CS/nevin-chatbot-ai-math-learning-assistant" target="_blank" rel="noopener">View repository ↗</a>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
