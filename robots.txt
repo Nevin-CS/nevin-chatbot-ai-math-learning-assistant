@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://nevin-cs.github.io/nevin-chatbot-ai-math-learning-assistant/sitemap.xml

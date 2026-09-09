@@ -1,0 +1,10 @@
+{
+  "name":"Nevin Chatbot - AI Math Learning Assistant",
+  "short_name":"Nevin Chatbot",
+  "start_url":"./",
+  "display":"standalone",
+  "background_color":"#061120",
+  "theme_color":"#071426",
+  "description":"Free step-by-step AI math learning for students and teachers.",
+  "icons":[{"src":"assets/favicon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]
+}
