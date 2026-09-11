@@ -45,7 +45,7 @@
     </a>
     <button id="menuButton" class="menu-button" type="button" aria-expanded="false" aria-controls="mainNav">Menu</button>
     <nav id="mainNav" aria-label="Main navigation">
-      <a href="#assistant">Assistant</a>
+ <a href="#assistant">Assistant</a>
       <a href="#workflow">How it works</a>
       <a href="#evaluation">Evaluation</a>
       <a href="#safety">Safety</a>
@@ -88,7 +88,35 @@
     <section class="assistant-section" id="assistant" aria-labelledby="assistant-title">
       <div class="section-heading">
         <span class="eyebrow">Live learning workspace</span>
-        <h2 id="assistant-title">Ask a mathematics question</h2>
+<section id="assistant" class="assistant-section">
+  <div class="assistant-card">
+    <span class="eyebrow">LIVE AI ASSISTANT</span>
+
+    <h2>Try Nevin Chatbot with Gemini</h2>
+
+    <p>
+      The live Gemini-powered version supports broader mathematics questions,
+      step-by-step explanations, learning-level adaptation, verification,
+      and follow-up questions.
+    </p>
+
+    <a
+      class="primary-button"
+      href="https://nevin-chatbot-ai-math-learning-assistant.ai.studio/"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Open Live Gemini Assistant
+    </a>
+
+    <div class="example-prompts">
+      <p><strong>Try asking:</strong></p>
+      <p>Solve 2x + 7 = 19 and explain every step.</p>
+      <p>Explain the Pythagorean theorem.</p>
+      <p>Differentiate x² + 3x.</p>
+    </div>
+  </div>
+</section>
         <p>The client validates scope and input first. The secure server then uses prompt-engineered Gemini tutoring, recent conversation context and deterministic math tools when available.</p>
       </div>
 
@@ -237,7 +265,7 @@
   </footer>
 
   <noscript><p class="noscript">JavaScript is required for the interactive tutor. The informational content remains available.</p></noscript>
-  <script src="config.js"></script>
+<script src="app.js"></script>
   <script type="module" src="app.js"></script>
 </body>
 </html>
