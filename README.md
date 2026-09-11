@@ -163,3 +163,43 @@ See [`privacy.html`](privacy.html), [`SECURITY.md`](SECURITY.md), and [`observab
 ## Educational disclaimer
 
 AI-generated mathematical explanations can make mistakes. Verify important calculations and follow school or university academic-integrity rules.
+
+## Day 5 - Model/API Integration with the User Interface
+
+Day 5 focuses on the complete learner-facing flow rather than adding another framework unnecessarily. The project keeps the responsive GitHub Pages interface and the working Google AI Studio Gemini deployment.
+
+### Day 5 interface flow
+
+```text
+Learner question
+      -> input validation + preprocessing
+      -> math-only scope check
+      -> secure Gemini/API path when configured
+      -> response post-processing
+      -> clear conversation output + status/latency
+      -> copy, regenerate, feedback, TXT/JSON export
+```
+
+### Day 5 UI improvements
+
+- learning-level selector and clear math question input
+- example prompts and input validation
+- loading/status feedback and friendly API errors
+- formatted conversation output with latency and quality indicators
+- mobile/keyboard-accessible interface
+- copy, regenerate and local feedback controls
+- **bonus:** download the latest response as TXT or export it as JSON
+- direct access to the working Google AI Studio Gemini assistant
+
+### No-code / low-code decision
+
+DDS provides a broad set of optional tools including Lovable, Base44, Replit, v0, Flowise, Voiceflow, Make.com, LangSmith and Hugging Face. For this project, Google AI Studio is the low-code/full-stack environment actually used for the live Gemini experience. I did not add an extra chatbot builder simply to increase the tool count; keeping one clear interface and one working AI deployment reduces complexity and makes testing easier.
+
+See [`DAY5_SUBMISSION_NOTES.md`](DAY5_SUBMISSION_NOTES.md) and [`docs/DAY5_UI_INTEGRATION.md`](docs/DAY5_UI_INTEGRATION.md).
+
+## Day 6 next steps
+
+- final enhancements and UI polish
+- security and privacy regression review
+- debugging and failure-path testing
+- deployment verification and final submission evidence

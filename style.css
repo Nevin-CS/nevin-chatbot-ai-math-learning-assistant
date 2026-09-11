@@ -185,3 +185,11 @@ footer strong, footer span { display: block; }
 .legal-wrap h1 { font-size: clamp(2.6rem, 7vw, 5rem); line-height: 1; margin: .4rem 0 2rem; }
 .legal-wrap h2 { margin-top: 2rem; }
 .legal-wrap p { color: #c2d4e8; }
+
+/* Day 5: UI integration and export controls */
+.day5-badge { display:inline-flex; align-items:center; gap:.45rem; padding:.45rem .75rem; border:1px solid rgba(74,222,128,.35); border-radius:999px; background:rgba(22,163,74,.10); color:#86efac; font-size:.78rem; font-weight:700; }
+.export-group { display:flex; flex-wrap:wrap; gap:.55rem; align-items:center; margin-left:auto; }
+.export-group button { border:1px solid rgba(148,163,184,.28); background:rgba(15,23,42,.72); color:#dbeafe; border-radius:10px; padding:.58rem .75rem; cursor:pointer; }
+.export-group button:hover, .export-group button:focus-visible { border-color:#38bdf8; }
+.ui-status { margin-top:.75rem; font-size:.85rem; color:#94a3b8; }
+@media (max-width: 720px) { .export-group { width:100%; margin-left:0; } .export-group button { flex:1 1 140px; } }

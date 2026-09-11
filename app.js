@@ -33,7 +33,9 @@ const els = {
   quality: $('qualityValue'),
   menu: $('menuButton'),
   nav: $('mainNav'),
-  liveAppLink: $('liveAppLink')
+  liveAppLink: $('liveAppLink'),
+  downloadTxt: $('downloadTxtBtn'),
+  downloadJson: $('downloadJsonBtn')
 };
 
 function nowLabel() {
@@ -356,6 +358,41 @@ function saveFeedback(value) {
   }
 }
 
+
+function downloadBlob(filename, content, type) {
+  const blob = new Blob([content], { type });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = filename;
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  URL.revokeObjectURL(url);
+}
+
+function exportLatest(format = 'txt') {
+  if (!state.lastAnswer) {
+    showError('Ask a math question before exporting a response.');
+    return;
+  }
+  const payload = {
+    project: 'Nevin Chatbot - AI Math Learning Assistant',
+    question: state.lastQuestion,
+    answer: state.lastAnswer,
+    provider: state.lastProvider,
+    latencyMs: state.lastLatencyMs,
+    exportedAt: new Date().toISOString()
+  };
+  if (format === 'json') {
+    downloadBlob('nevin-chatbot-response.json', JSON.stringify(payload, null, 2), 'application/json');
+  } else {
+    const text = `Nevin Chatbot - AI Math Learning Assistant\n\nQuestion:\n${payload.question}\n\nAnswer:\n${payload.answer}\n\nProvider: ${payload.provider || 'n/a'}\nLatency: ${payload.latencyMs ?? 'n/a'} ms\n`;
+    downloadBlob('nevin-chatbot-response.txt', text, 'text/plain;charset=utf-8');
+  }
+  setStatus('Response exported', 'ok');
+}
+
 function regenerate() {
   if (!state.lastQuestion || state.busy) return;
   if (state.lastCacheKey) sessionStorage.removeItem(state.lastCacheKey);
@@ -379,6 +416,9 @@ document.querySelectorAll('[data-feedback]').forEach((button) => {
 els.solve.addEventListener('click', solve);
 els.clear.addEventListener('click', clearConversation);
 els.retry.addEventListener('click', regenerate);
+els.downloadTxt?.addEventListener('click', () => exportLatest('txt'));
+els.downloadJson?.addEventListener('click', () => exportLatest('json'));
+
 els.copy.addEventListener('click', async () => {
   try {
     await navigator.clipboard.writeText(state.lastAnswer);

@@ -1,4 +1,4 @@
-const CACHE_NAME = 'nevin-chatbot-v5';
+const CACHE_NAME = 'nevin-chatbot-v6-day5';
 const STATIC_ASSETS = [
   './',
   './index.html',
