@@ -1,0 +1,8 @@
+.env
+.env.*
+!.env.example
+node_modules/
+.wrangler/
+evaluation/latest-results.json
+.DS_Store
+Thumbs.db

@@ -1,33 +1,62 @@
-# DDS Building Agentic AI Challenge — Day 4 submission notes
+# DDS Building Agentic AI Challenge — Day 4 Submission Notes
 
-## What changed today
-- Upgraded the Day 2/3 prototype into a production-oriented GitHub Pages frontend.
-- Added multi-turn tutoring, explanation-level controls, provider selection, retry/error/fallback states, and feedback controls.
-- Added a local deterministic math fallback for arithmetic and simple linear equations.
-- Added a secure server-side integration design for OpenAI and Gemini using a Cloudflare Worker so API keys are never exposed in GitHub Pages.
-- Added automatic provider fallback (`auto` mode), request timeouts, payload limits, CORS origin restriction, best-effort rate limiting, and generic production error messages.
-- Added SEO metadata, canonical URL, Open Graph, JSON-LD, robots.txt, sitemap.xml, PWA manifest, and service worker.
-- Added privacy and accessibility pages, keyboard/focus support, reduced-motion support, and responsive layouts.
-- Added automated Node tests and GitHub Actions quality checks.
+## Objective
 
-## Model/API plan
-- OpenAI: Responses API; model configurable by the owner through `OPENAI_MODEL`.
-- Gemini: Interactions API; model configurable through `GEMINI_MODEL`.
-- API secrets remain server-side only.
+Enhance the LLM/API integration, strengthen prompt quality, preprocess input, post-process responses, test the complete user flow, measure performance, protect privacy, and prepare the project for Day 5 interface integration.
+
+## API and model
+
+- Live model path: Gemini through the Google AI Studio deployment.
+- Optional repository backend: Cloudflare Worker with server-side `GEMINI_API_KEY`.
+- Public learners do not enter an API key or credit card.
+
+## Prompt engineering
+
+The prompt now enforces mathematics-only scope, learning-level adaptation, concept-first explanations, numbered steps, verification, a clear final answer, and a learning tip. It also defines an exact out-of-scope behavior.
+
+## Data handling
+
+- Trim and normalize text and mathematical symbols.
+- Remove control characters and repeated whitespace.
+- Limit input to 3000 characters.
+- Estimate token use before submission.
+- Detect common PII and secret patterns.
+- Keep only the latest 12 conversation turns.
+- Post-process empty, unsafe, out-of-scope, and overly long model output.
+
+## Tool/function pattern
+
+The project adapts the function-calling pattern to deterministic math tools for arithmetic and linear-equation verification. The verified tool output is supplied to the model as evidence for the explanation.
+
+## Evaluation and testing
+
+- Mathematics accuracy
+- Step correctness
+- Concept clarity and coherence
+- Response-format compliance
+- Safe refusal of non-math questions
+- API latency
+- Empty, long, ambiguous, PII, timeout and quota cases
+- Multi-turn follow-ups
+- Mobile and keyboard accessibility
+- BLEU-2 as a supplemental wording metric only
+
+## Fine-tuning decision
+
+Fine-tuning was not appropriate on Day 4 because there is not yet a sufficiently large, reviewed, rights-cleared custom tutoring dataset. Prompt engineering and tool-assisted verification were selected instead.
+
+## Challenges and improvements
+
+- Static GitHub Pages cannot safely store provider keys. The live Gemini version is hosted through Google AI Studio, while the repository includes a secure backend option.
+- Earlier frontend/backend route and response-field mismatches were fixed by supporting both `/chat` and `/api/chat`, and both `reply` and `answer` fields.
+- The old broad fallback was replaced with a strict math-only guard and a transparent local verifier for supported calculations.
 
 ## Current status
-- Frontend package: ready for upload to the existing GitHub repository.
-- Local math fallback: implemented and tested.
-- Secure OpenAI/Gemini gateway: implemented and ready to deploy.
-- Live AI responses: become active after the project owner deploys the Worker and adds provider API secrets.
 
-## Testing performed
-- JavaScript syntax checks passed.
-- 7 automated tests passed (math engine, required files, SEO, no embedded provider secrets, accessibility basics).
-- Required deployment files verified.
+- Live Gemini app: https://nevin-chatbot-ai-math-learning-assistant.ai.studio/
+- Repository: https://github.com/Nevin-CS/nevin-chatbot-ai-math-learning-assistant
+- GitHub Pages: https://nevin-cs.github.io/nevin-chatbot-ai-math-learning-assistant/
 
-## Important limitation
-No web application can honestly guarantee zero bugs, zero latency, or zero downtime. The project now includes defensive handling, timeouts, retries, fallbacks, and tests to reduce failures and improve user experience.
+## Day 5 next steps
 
-## Free-access statement
-Students and teachers are not asked for an account, credit card, or payment. External OpenAI/Gemini API costs, quotas, and billing remain the responsibility of the project owner.
+Complete interface integration, run the live evaluation set, capture final screenshots, improve mobile behavior based on feedback, and keep submission links current.

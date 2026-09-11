@@ -1,141 +1,243 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Nevin Chatbot - AI Math Learning Assistant prototype for the DDS Building AI Application Challenge 2026." />
-  <meta name="theme-color" content="#0f172a" />
-  <title>Nevin Chatbot | AI Math Learning Assistant</title>
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>Nevin Chatbot – AI Math Learning Assistant</title>
+  <meta name="description" content="Learn mathematics with step-by-step explanations, concept guidance, verification and interactive AI tutoring with Nevin Chatbot.">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="theme-color" content="#071425">
+  <link rel="canonical" href="https://nevin-cs.github.io/nevin-chatbot-ai-math-learning-assistant/">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Nevin Chatbot – AI Math Learning Assistant">
+  <meta property="og:description" content="Understand the math, not just the answer. Free AI-guided tutoring for students and teachers.">
+  <meta property="og:url" content="https://nevin-cs.github.io/nevin-chatbot-ai-math-learning-assistant/">
+  <meta property="og:image" content="https://nevin-cs.github.io/nevin-chatbot-ai-math-learning-assistant/assets/social-card.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Nevin Chatbot – AI Math Learning Assistant">
+  <meta name="twitter:description" content="Concept-first, step-by-step mathematics tutoring powered by Gemini.">
+  <meta name="twitter:image" content="https://nevin-cs.github.io/nevin-chatbot-ai-math-learning-assistant/assets/social-card.png">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src 'self' https://nevin-chatbot-api.pintonevin.workers.dev; img-src 'self' data:; style-src 'self'; script-src 'self'; font-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests">
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"SoftwareApplication",
+    "name":"Nevin Chatbot – AI Math Learning Assistant",
+    "applicationCategory":"EducationalApplication",
+    "operatingSystem":"Web",
+    "url":"https://nevin-cs.github.io/nevin-chatbot-ai-math-learning-assistant/",
+    "description":"A mathematics-only AI tutor that explains concepts, shows steps, verifies results and supports follow-up learning.",
+    "offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},
+    "creator":{"@type":"Person","name":"Nevin Pinto"}
+  }
+  </script>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
   <header class="site-header">
     <a class="brand" href="#top" aria-label="Nevin Chatbot home">
-      <span class="brand-mark">N</span>
+      <span class="brand-mark" aria-hidden="true">N</span>
       <span><strong>Nevin Chatbot</strong><small>AI Math Learning Assistant</small></span>
     </a>
-    <nav aria-label="Main navigation">
+    <button id="menuButton" class="menu-button" type="button" aria-expanded="false" aria-controls="mainNav">Menu</button>
+    <nav id="mainNav" aria-label="Main navigation">
       <a href="#assistant">Assistant</a>
-      <a href="#features">Features</a>
+      <a href="#workflow">How it works</a>
+      <a href="#evaluation">Evaluation</a>
+      <a href="#safety">Safety</a>
       <a href="#about">About</a>
-      <a class="github-link" href="https://github.com/Nevin-CS/nevin-chatbot-ai-math-learning-assistant" target="_blank" rel="noopener">GitHub</a>
+      <a class="github-link" href="https://github.com/Nevin-CS/nevin-chatbot-ai-math-learning-assistant" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
     </nav>
   </header>
 
-  <main id="top">
-    <section class="hero">
+  <main id="main">
+    <section class="hero" id="top">
       <div class="hero-copy">
-        <span class="eyebrow">DDS Building AI Application Challenge 2026 · Day 2 Prototype</span>
+        <p class="eyebrow">DDS Building Agentic AI Application Challenge 2026 · Day 4</p>
         <h1>Understand the <span>math</span>, not just the answer.</h1>
-        <p>Nevin Chatbot is an educational assistant designed to analyze math questions, explain the underlying concept, and guide learners through clear step-by-step solutions.</p>
+        <p>Nevin Chatbot helps students learn mathematics through concept explanations, structured step-by-step guidance, verification and interactive follow-up questions.</p>
         <div class="hero-actions">
-          <a class="btn primary" href="#assistant">Try the prototype</a>
-          <a class="btn secondary" href="#examples">View examples</a>
+          <a class="btn primary" href="#assistant">Start learning</a>
+          <a class="btn secondary" href="https://nevin-chatbot-ai-math-learning-assistant.ai.studio/" target="_blank" rel="noopener noreferrer">Open live Gemini app ↗</a>
         </div>
-        <div class="hero-pills">
-          <span>Step-by-step learning</span><span>Concept explanations</span><span>Student-focused UX</span>
+        <div class="trust-row" aria-label="Product highlights">
+          <span>Mathematics only</span>
+          <span>Gemini-powered</span>
+          <span>Free for students & teachers</span>
+          <span>No credit card required</span>
+          <span>No API key required from users</span>
         </div>
       </div>
       <div class="hero-visual" aria-hidden="true">
         <div class="orb"></div>
-        <div class="formula f1">x² + 5x + 6</div>
+        <div class="assistant-card">
+          <div class="bot-face">Σ</div>
+          <strong>Concept → Steps → Verify → Learn</strong>
+          <small>Math-only tutoring with a deterministic verification tool for supported calculations.</small>
+        </div>
+        <div class="formula f1">2x + 7 = 19</div>
         <div class="formula f2">∫ f(x) dx</div>
         <div class="formula f3">a² + b² = c²</div>
-        <div class="assistant-card">
-          <div class="bot-face">∑</div>
-          <strong>Math learning flow</strong>
-          <small>Question → Concept → Steps → Check</small>
-        </div>
       </div>
     </section>
 
-    <section class="assistant-section" id="assistant">
+    <section class="assistant-section" id="assistant" aria-labelledby="assistant-title">
       <div class="section-heading">
-        <span class="eyebrow">Interactive prototype</span>
-        <h2>Ask a math question</h2>
-        <p>This Day 2 version demonstrates the intended learning flow. It includes a local prototype engine for selected arithmetic and simple linear-equation examples; an LLM/API connection is planned for later challenge days.</p>
+        <span class="eyebrow">Live learning workspace</span>
+        <h2 id="assistant-title">Ask a mathematics question</h2>
+        <p>The client validates scope and input first. The secure server then uses prompt-engineered Gemini tutoring, recent conversation context and deterministic math tools when available.</p>
       </div>
 
       <div class="workspace">
-        <div class="question-panel card">
-          <label for="level">Learning level</label>
-          <select id="level">
-            <option value="simple">Simple explanation</option>
-            <option value="standard" selected>Standard explanation</option>
-            <option value="detailed">Detailed explanation</option>
-          </select>
+        <section class="question-panel card" aria-label="Question controls">
+          <div class="control-grid">
+            <label for="level">Learning level
+              <select id="level">
+                <option value="middle-school">Middle school</option>
+                <option value="high-school" selected>High school</option>
+                <option value="college">College / university</option>
+                <option value="teacher">Teacher / instructor</option>
+              </select>
+            </label>
+            <div class="scope-card" role="note">
+              <strong>Math-only scope</strong>
+              <span>Non-mathematics questions are politely refused.</span>
+            </div>
+          </div>
 
           <label for="question">Your math question</label>
-          <textarea id="question" rows="6" placeholder="Try: 2x + 3 = 11   or   12 * (4 + 3)"></textarea>
+          <textarea id="question" rows="6" maxlength="3000" aria-describedby="questionHelp" placeholder="Try: Solve 2x + 7 = 19 and explain every step."></textarea>
+          <p class="field-help" id="questionHelp"><span id="charCount">0</span>/3000 characters · approximately <span id="tokenCount">0</span> input tokens. Do not enter personal or sensitive information.</p>
 
-          <div class="quick-examples" id="examples">
-            <button type="button" data-q="2x + 3 = 11">2x + 3 = 11</button>
-            <button type="button" data-q="12 * (4 + 3)">12 × (4 + 3)</button>
-            <button type="button" data-q="18 / 3 + 5">18 ÷ 3 + 5</button>
+          <div class="quick-examples" aria-label="Example questions">
+            <button type="button" data-q="Solve 2x + 7 = 19 and explain every step.">Try algebra</button>
+            <button type="button" data-q="Explain the Pythagorean theorem with a simple example.">Try geometry</button>
+            <button type="button" data-q="Differentiate x^2 + 3x and explain the power rule.">Try calculus</button>
+            <button type="button" data-q="Explain quadratic equations to a beginner.">Explain a concept</button>
           </div>
 
           <div class="button-row">
             <button id="solveBtn" class="btn primary" type="button">Explain step by step</button>
-            <button id="clearBtn" class="btn ghost" type="button">Clear</button>
+            <button id="clearBtn" class="btn ghost" type="button">New conversation</button>
           </div>
-          <p class="safety-note">Prototype note: always verify AI-generated mathematical work. This Day 2 demo is not a substitute for a teacher or formal assessment.</p>
-        </div>
+          <p class="safety-note">AI-generated mathematical explanations can make mistakes. Verify important calculations and academic work.</p>
+        </section>
 
-        <div class="answer-panel card" aria-live="polite">
+        <section class="answer-panel card" aria-label="Tutor conversation">
           <div class="answer-header">
-            <div>
-              <span class="eyebrow">Learning response</span>
-              <h3 id="answerTitle">Ready when you are</h3>
-            </div>
-            <span id="statusBadge" class="status">Prototype</span>
+            <div><span class="eyebrow">Tutor conversation</span><h3 id="answerTitle">Ready when you are</h3></div>
+            <span id="statusBadge" class="status" role="status" aria-live="polite">Math tutor ready</span>
           </div>
-          <div id="answerContent" class="answer-content empty-state">
-            <div class="empty-icon">ƒ(x)</div>
-            <p>Enter a supported arithmetic expression or a simple linear equation in <strong>x</strong> to see the Day 2 learning flow.</p>
+
+          <div class="metric-strip" aria-label="Current response metrics">
+            <div><span>Latency</span><strong id="latencyValue">—</strong></div>
+            <div><span>Format check</span><strong id="qualityValue">—</strong></div>
+            <div><span>Privacy</span><strong>No PII needed</strong></div>
           </div>
-        </div>
+
+          <div id="conversation" class="conversation" aria-live="polite" aria-relevant="additions text">
+            <div class="empty-state"><div class="empty-icon">ƒ(x)</div><p>Ask a math question to begin. Nevin Chatbot will explain the concept, show the steps, and help you verify the result.</p></div>
+          </div>
+
+          <div id="responseActions" class="response-actions" hidden>
+            <button id="copyBtn" type="button">Copy answer</button>
+            <button id="retryBtn" type="button">Regenerate</button>
+            <span class="feedback-label">Helpful?</span>
+            <button class="feedback" data-feedback="up" type="button" aria-label="Mark response helpful">👍</button>
+            <button class="feedback" data-feedback="down" type="button" aria-label="Mark response not helpful">👎</button>
+            <button class="feedback" data-feedback="report" type="button">Report issue</button>
+          </div>
+
+          <div id="errorBox" class="error-box" role="alert" hidden></div>
+          <a id="liveAppLink" class="fallback-link" href="https://nevin-chatbot-ai-math-learning-assistant.ai.studio/" target="_blank" rel="noopener noreferrer" hidden>Open the working Gemini app ↗</a>
+        </section>
       </div>
     </section>
 
-    <section class="features" id="features">
+    <section class="workflow" id="workflow" aria-labelledby="workflow-title">
       <div class="section-heading centered">
-        <span class="eyebrow">Planned product capabilities</span>
-        <h2>Designed for learning, not answer copying</h2>
+        <span class="eyebrow">Seven-step LLM project workflow</span>
+        <h2 id="workflow-title">From a real problem to a reliable learning product</h2>
+      </div>
+      <ol class="seven-steps">
+        <li><span>01</span><strong>Problem</strong><p>Students often receive answers without understanding.</p></li>
+        <li><span>02</span><strong>Use case</strong><p>Teach math with clear steps, verification and follow-ups.</p></li>
+        <li><span>03</span><strong>Prompt</strong><p>Define scope, structure, learning level and refusal behavior.</p></li>
+        <li><span>04</span><strong>Tools</strong><p>Use deterministic calculation and equation verification.</p></li>
+        <li><span>05</span><strong>Prototype</strong><p>Connect the interface to the secure model endpoint.</p></li>
+        <li><span>06</span><strong>Evaluate</strong><p>Measure accuracy, coherence, refusal quality and latency.</p></li>
+        <li><span>07</span><strong>Deploy</strong><p>Publish, monitor, collect feedback and improve.</p></li>
+      </ol>
+    </section>
+
+    <section class="evaluation" id="evaluation" aria-labelledby="evaluation-title">
+      <div class="section-heading">
+        <span class="eyebrow">Day 4 evaluation</span>
+        <h2 id="evaluation-title">Test the whole system, not only the model</h2>
+        <p>The included evaluation harness covers mathematics accuracy, response structure, safe refusal of non-math questions, edge cases, and API response time. BLEU-2 is included only as a supplemental wording-similarity measure because correct tutoring responses can be phrased in many valid ways.</p>
       </div>
       <div class="feature-grid">
-        <article class="feature-card"><span>01</span><h3>Question analysis</h3><p>Interpret the learner's question and identify the mathematical task.</p></article>
-        <article class="feature-card"><span>02</span><h3>Step-by-step solving</h3><p>Break the solution into understandable stages rather than only showing a final result.</p></article>
-        <article class="feature-card"><span>03</span><h3>Concept explanations</h3><p>Explain the mathematical idea behind the steps in learner-friendly language.</p></article>
-        <article class="feature-card"><span>04</span><h3>Personalized support</h3><p>Adjust explanation depth based on the learner's selected level and questions.</p></article>
+        <article class="feature-card"><span>01</span><h3>Accuracy</h3><p>Expected-answer patterns and deterministic checks for supported calculations.</p></article>
+        <article class="feature-card"><span>02</span><h3>Coherence</h3><p>Concept, steps, verification, final answer and learning tip structure.</p></article>
+        <article class="feature-card"><span>03</span><h3>Scope control</h3><p>Non-math requests are refused consistently without generating unrelated content.</p></article>
+        <article class="feature-card"><span>04</span><h3>Latency</h3><p>Response time is displayed and recorded to support real-time optimization.</p></article>
+        <article class="feature-card"><span>05</span><h3>Edge cases</h3><p>Empty input, long input, PII, ambiguous prompts, timeouts and unavailable APIs.</p></article>
+        <article class="feature-card"><span>06</span><h3>Feedback</h3><p>Helpful, not helpful and report-issue feedback is stored locally by default.</p></article>
       </div>
+    </section>
+
+    <section class="safety" id="safety" aria-labelledby="safety-title">
+      <div>
+        <span class="eyebrow">Security & privacy</span>
+        <h2 id="safety-title">Protect learners and provider credentials</h2>
+        <p>The public frontend contains no secret key. The server-side integration validates scope and input, limits conversation history, protects API credentials through environment variables, and returns safe user-facing errors.</p>
+      </div>
+      <ul class="check-list">
+        <li>No API keys in GitHub Pages files</li>
+        <li>Origin restriction and request-size limits</li>
+        <li>PII and secret-pattern detection before submission</li>
+        <li>Safe text rendering with no model-generated HTML</li>
+        <li>Retries, timeout handling and local math verification</li>
+        <li>No payment form, advertising tracker or account requirement</li>
+      </ul>
     </section>
 
     <section class="about" id="about">
       <div class="about-copy">
-        <span class="eyebrow">Project purpose</span>
-        <h2>Making mathematics more approachable</h2>
-        <p>The project is aimed at high-school, college and introductory university learners, as well as teachers and independent learners who want an interactive support tool.</p>
-        <p>The full challenge roadmap will focus on accuracy, reducing misleading answers, improving prompt consistency, supporting different learning levels, and maintaining a simple user experience.</p>
+        <span class="eyebrow">About the project</span>
+        <h2>Built through the DDS challenge</h2>
+        <p>Nevin Chatbot evolved from a Day 2 interface prototype into a Gemini-powered mathematics tutor focused on responsible prompting, tool-assisted verification, evaluation, security and accessibility.</p>
+        <p><strong>Developer:</strong> Nevin Pinto · Electrical Engineering student · AI learner and builder.</p>
       </div>
       <div class="roadmap card">
-        <h3>Challenge roadmap</h3>
+        <h3>Day 4 decisions</h3>
         <ol>
-          <li><b>Day 1</b><span>Idea & concept</span></li>
-          <li class="active"><b>Day 2</b><span>Environment & prototype</span></li>
-          <li><b>Day 3</b><span>Build the AI brain</span></li>
-          <li><b>Day 4</b><span>Evaluate & optimize</span></li>
-          <li><b>Day 5+</b><span>Integrate, secure & deploy</span></li>
+          <li><b>Prompt engineering</b><span>Used instead of model fine-tuning at this stage</span></li>
+          <li><b>Math-only guard</b><span>Reject unrelated topics</span></li>
+          <li><b>Tool augmentation</b><span>Verify supported calculations</span></li>
+          <li><b>Evaluation</b><span>Accuracy, format, scope and latency</span></li>
+          <li class="active"><b>Day 5 next</b><span>Interface integration and final usability testing</span></li>
         </ol>
       </div>
     </section>
   </main>
 
   <footer>
-    <div><strong>Nevin Chatbot</strong><span>Built for the DDS Building AI Application Challenge 2026.</span></div>
-    <a href="https://github.com/Nevin-CS/nevin-chatbot-ai-math-learning-assistant" target="_blank" rel="noopener">View repository ↗</a>
+    <div><strong>Nevin Chatbot</strong><span>Free educational project · No credit card required for learners</span></div>
+    <div class="footer-links">
+      <a href="privacy.html">Privacy</a>
+      <a href="accessibility.html">Accessibility</a>
+      <a href="evaluation/DAY4_EVALUATION_PLAN.md">Evaluation</a>
+      <a href="https://github.com/Nevin-CS/nevin-chatbot-ai-math-learning-assistant" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+    </div>
   </footer>
 
-  <script src="script.js"></script>
+  <noscript><p class="noscript">JavaScript is required for the interactive tutor. The informational content remains available.</p></noscript>
+  <script src="config.js"></script>
+  <script type="module" src="app.js"></script>
 </body>
 </html>
