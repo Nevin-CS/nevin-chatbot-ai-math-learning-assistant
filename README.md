@@ -1,205 +1,86 @@
-# Nevin Chatbot — AI Math Learning Assistant
+# Building Agentic AI Challenge
 
-A mathematics-only AI tutor built for the **DDS Building Agentic AI Application Challenge 2026**.
+This repository is designed to keep the complete challenge submission in one place: application code, configuration, notebooks, tests, reports, progress tracking, slide references, PDFs, and demo videos.
 
-- **Primary live Gemini app:** https://nevin-chatbot-ai-math-learning-assistant.ai.studio/
-- **GitHub Pages project site:** https://nevin-cs.github.io/nevin-chatbot-ai-math-learning-assistant/
-- **Repository:** https://github.com/Nevin-CS/nevin-chatbot-ai-math-learning-assistant
+## Current package status
 
-## Purpose
+The Day 6 repository scaffold, progress workbook, report template, security checklist, test plan, reference slides, and repository preflight tooling are included. The actual application source code, project-specific test evidence, GitHub remote URL, and demo video were not supplied and are marked **Needs User Content**.
 
-Nevin Chatbot helps students understand mathematics through concept explanations, step-by-step solutions, verification, learning-level adaptation, and follow-up questions. It intentionally refuses questions outside mathematics.
+## Day 6 focus
 
-## Day 4 improvements
+- Final model and parameter tuning
+- Prompt optimization and structured outputs
+- Edge-case and fallback behavior
+- API performance, token, and rate-limit tuning
+- Error handling and debugging
+- Final UX improvements
+- Prompt-injection, data-leakage, and tool-misuse controls
+- Day 7 submission readiness
 
-- Prompt-engineered math-only tutoring behavior
-- Multi-turn context limited to the latest 12 turns
-- Input cleaning, symbol normalization, length limits, token estimates, and PII/secret checks
-- Post-processing for empty, unsafe, overly long, and out-of-scope responses
-- Deterministic tools for arithmetic and simple linear-equation verification
-- Compatibility with both `/chat` and `/api/chat` backend routes
-- API retries, 20-second timeout, quota/rate-limit messages, and safe fallbacks
-- Response-latency display and local feedback controls
-- Evaluation cases for accuracy, coherence, scope control, privacy, edge cases, and latency
-- Supplemental BLEU-2 implementation for wording similarity
-- Optional LangSmith evaluator prompt and observability guide
-- SEO, accessibility, privacy, PWA, and GitHub Actions checks
+## Key files
 
-## Seven-step LLM workflow
+- Progress workbook: `docs/progress/Building_Agentic_AI_Progress_Workbook_Day6.xlsx`
+- Day 6 report PDF: `docs/reports/Day_6_Final_Integration_Report_Template.pdf`
+- Editable report: `docs/reports/day-06-final-integration-report.md`
+- Security checklist: `docs/security/day-06-security-checklist.csv`
+- Test plan: `docs/testing/day-06-test-plan.csv`
+- Day 6 slides: `assets/day-06/slides/`
+- Repository preflight: `scripts/repository_preflight.py`
 
-1. Problem
-2. Use case
-3. Prompt
-4. Tools and data
-5. Prototype
-6. Evaluate
-7. Deploy and improve
-
-See [`docs/SEVEN_STEP_LLM_PROJECT.md`](docs/SEVEN_STEP_LLM_PROJECT.md).
-
-## Architecture
+## Repository map
 
 ```text
-Student / Teacher
-       ↓
-GitHub Pages or Google AI Studio UI
-       ↓
-Input preprocessing + math-only scope guard
-       ↓
-Secure server-side Gemini integration
-       ↓
-Deterministic verification tool when supported
-       ↓
-Post-processing + response metrics + feedback
+app/                         Application entry points or UI
+src/                         Core source code
+tests/                       Automated tests
+notebooks/                   Exploration and evaluation notebooks
+data/                        Safe sample data only
+config/                      Prompt, guardrail, and tool-policy examples
+docs/architecture/           Architecture diagrams and decisions
+docs/progress/               Progress workbook
+docs/reports/                Editable and PDF reports
+docs/security/               Security checklist and evidence
+docs/testing/                Test plan and results
+assets/day-06/slides/        Supplied Day 6 reference images
+assets/pdfs/                 Additional challenge PDFs
+assets/videos/               Demo videos or link files
+security/                    Adversarial test cases
+scripts/                     Preflight and Git LFS setup helpers
 ```
 
-## Free learner access
+## Add the real project files
 
-The interface contains no payment page, credit-card field, advertising tracker, or requirement for students and teachers to provide an API key. Provider quotas or costs, if any, remain the project owner's responsibility.
+1. Put the application in `app/` and/or `src/`.
+2. Add automated tests under `tests/`.
+3. Add safe sample data only under `data/`; do not upload private data.
+4. Add challenge PDFs under `assets/pdfs/` or `docs/reports/`.
+5. Add demo videos under `assets/videos/`. Run `scripts/setup_git_lfs.sh` first for large videos.
+6. Replace all `[TO UPDATE]` fields in the report and workbook with evidence links.
+7. Run `python scripts/repository_preflight.py` before committing.
 
-## Run the static project locally
+## Push to GitHub
+
+Create an empty GitHub repository, then run:
 
 ```bash
-python3 -m http.server 8000
+git init -b main
+python scripts/repository_preflight.py
+git add .
+git commit -m "Add challenge deliverables through Day 6"
+git remote add origin <REMOTE-URL>
+git push -u origin main
 ```
 
-Then open `http://localhost:8000`.
+For large videos, install Git LFS and run `scripts/setup_git_lfs.sh` before `git add .`.
 
-## Secure Gemini backend
+## Security rules
 
-The included Cloudflare Worker supports:
+- Never commit API keys, passwords, private keys, tokens, or real `.env` files.
+- Treat user input, retrieved documents, files, and tool output as untrusted data.
+- Keep tool access default-deny, role-scoped, server-validated, and confirmation-gated for sensitive actions.
+- Validate structured model output before rendering it or passing it to another tool.
+- Redact sensitive values in logs, traces, screenshots, reports, and videos.
 
-- `GET /health`
-- `POST /chat`
-- `POST /api/chat`
+## Large-file guidance
 
-Set the following in Cloudflare:
-
-```text
-ALLOWED_ORIGIN=https://nevin-cs.github.io
-GEMINI_MODEL=<model available to your account>
-GEMINI_API_KEY=<encrypted Cloudflare secret>
-```
-
-Never place provider keys in `config.js`, `app.js`, HTML, screenshots, or the public repository.
-
-## Prompt engineering
-
-The system prompt enforces:
-
-- mathematics-only scope
-- concept-first teaching
-- numbered steps
-- verification
-- final-answer clarity
-- learning-level adaptation
-- safe refusal and privacy behavior
-
-See [`src/prompt.js`](src/prompt.js).
-
-## Function/tool use
-
-Day 4 adapts the function-calling pattern to math verification:
-
-- `calculate_expression`
-- `solve_linear_equation`
-
-The tool output is passed to the model as verification context. See [`docs/OPENAI_FUNCTION_CALLING_ADAPTATION.md`](docs/OPENAI_FUNCTION_CALLING_ADAPTATION.md).
-
-## Evaluation
-
-Run unit and static checks:
-
-```bash
-npm test
-npm run check
-```
-
-Run the live evaluation harness against the configured Worker:
-
-```bash
-NEVIN_API_ENDPOINT="https://nevin-chatbot-api.pintonevin.workers.dev/chat" npm run evaluate
-```
-
-The harness records:
-
-- final-answer pattern accuracy
-- math-only refusal accuracy
-- response-structure score
-- BLEU-2 as a supplemental metric
-- end-to-end latency
-
-BLEU is not treated as the main quality measure because correct tutoring answers can use different wording.
-
-## Fine-tuning decision
-
-Fine-tuning is **not used on Day 4**. The project does not yet have a sufficiently large, reviewed, rights-cleared tutoring dataset. Prompt engineering, deterministic verification, and systematic evaluation are the safer and faster choices for this checkpoint.
-
-## No-code / low-code evidence
-
-Google AI Studio Build mode is the primary low-code environment used for the live Gemini application. The repository contains an AI Studio refinement prompt and evidence screenshots for the Day 4 workbook.
-
-## Security and privacy
-
-- API keys remain server-side
-- CORS origin restriction
-- message and request-size limits
-- PII/secret-pattern checks
-- safe text rendering
-- no raw stack traces shown to learners
-- no analytics or advertising trackers
-- local feedback storage by default
-
-See [`privacy.html`](privacy.html), [`SECURITY.md`](SECURITY.md), and [`observability/LANGSMITH_OPTIONAL_SETUP.md`](observability/LANGSMITH_OPTIONAL_SETUP.md).
-
-## Day 5 next steps
-
-- Complete interface integration testing
-- Run the full live evaluation set and record measured results
-- Capture successful conversations and edge-case screenshots
-- Improve mobile usability based on feedback
-- Keep the final submission links and README current
-
-## Educational disclaimer
-
-AI-generated mathematical explanations can make mistakes. Verify important calculations and follow school or university academic-integrity rules.
-
-## Day 5 - Model/API Integration with the User Interface
-
-Day 5 focuses on the complete learner-facing flow rather than adding another framework unnecessarily. The project keeps the responsive GitHub Pages interface and the working Google AI Studio Gemini deployment.
-
-### Day 5 interface flow
-
-```text
-Learner question
-      -> input validation + preprocessing
-      -> math-only scope check
-      -> secure Gemini/API path when configured
-      -> response post-processing
-      -> clear conversation output + status/latency
-      -> copy, regenerate, feedback, TXT/JSON export
-```
-
-### Day 5 UI improvements
-
-- learning-level selector and clear math question input
-- example prompts and input validation
-- loading/status feedback and friendly API errors
-- formatted conversation output with latency and quality indicators
-- mobile/keyboard-accessible interface
-- copy, regenerate and local feedback controls
-- **bonus:** download the latest response as TXT or export it as JSON
-- direct access to the working Google AI Studio Gemini assistant
-
-### No-code / low-code decision
-
-DDS provides a broad set of optional tools including Lovable, Base44, Replit, v0, Flowise, Voiceflow, Make.com, LangSmith and Hugging Face. For this project, Google AI Studio is the low-code/full-stack environment actually used for the live Gemini experience. I did not add an extra chatbot builder simply to increase the tool count; keeping one clear interface and one working AI deployment reduces complexity and makes testing easier.
-
-See [`DAY5_SUBMISSION_NOTES.md`](DAY5_SUBMISSION_NOTES.md) and [`docs/DAY5_UI_INTEGRATION.md`](docs/DAY5_UI_INTEGRATION.md).
-
-## Day 6 next steps
-
-- final enhancements and UI polish
-- security and privacy regression review
-- debugging and failure-path testing
-- deployment verification and final submission evidence
+GitHub documentation states that browser uploads are limited to 25 MiB and regular Git blocks files over 100 MiB. Use Git LFS or release assets for larger binaries. See `docs/github/GITHUB_UPLOAD_GUIDE.md` for the official references and commands.
